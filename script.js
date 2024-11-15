@@ -1,4 +1,3 @@
-// Создание приложения PixiJS
 const app = new PIXI.Application({
 	view: document.getElementById('pixi-canvas'),
 	width: 980,
@@ -6,7 +5,7 @@ const app = new PIXI.Application({
 	backgroundColor: 0x159585,
 });
 
-// Загрузка фона
+// Загрузка фона с PixiJS
 PIXI.Assets.load('./assets/images/background.png').then((texture) => {
 	const background = new PIXI.Sprite(texture);
 	background.width = app.screen.width;
@@ -14,7 +13,7 @@ PIXI.Assets.load('./assets/images/background.png').then((texture) => {
 	app.stage.addChildAt(background, 0);
 });
 
-// Загрузка текстур карты и персонажа
+// Загрузка текстур карты и персонажа с PixiJS
 PIXI.Assets.load(['./assets/images/map.png', './assets/images/hero.png']).then((textures) => {
 	const map = new PIXI.Sprite(textures['./assets/images/map.png']);
 	app.stage.addChild(map);
@@ -25,7 +24,6 @@ PIXI.Assets.load(['./assets/images/map.png', './assets/images/hero.png']).then((
 	hero.anchor.set(0.5);
 	app.stage.addChild(hero);
 
-	// Массив точек траектории
 	const points = [
 		{ x: 445, y: 490 },
 		{ x: 500, y: 450 },
@@ -38,7 +36,7 @@ PIXI.Assets.load(['./assets/images/map.png', './assets/images/hero.png']).then((
 
 	let isMoving = false;
 	let currentPointIndex = 0;
-	let t = 0; // Параметр времени анимации
+	let t = 0;
 	let mirrorEffect = 1;
 
 	// Функция easing для плавного движения
@@ -46,7 +44,7 @@ PIXI.Assets.load(['./assets/images/map.png', './assets/images/hero.png']).then((
 		return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
 	}
 
-	// Функция для плавного движения к точке
+	// Функция для плавного движения
 	function moveToNextPoint() {
 		if (currentPointIndex >= points.length - 1) {
 			console.log('Достигнута конечная точка маршрута.');
@@ -62,16 +60,13 @@ PIXI.Assets.load(['./assets/images/map.png', './assets/images/hero.png']).then((
 		// Анимация движения
 		function animateMove() {
 			if (t < 1 && isMoving) {
-				t += 0.02; // Скорость анимации
+				t += 0.02;
 
-				// Применяем easing
 				const easedT = easeInOutQuad(t);
 
-				// Интерполяция между точками
 				hero.x = p0.x + (p1.x - p0.x) * easedT;
 				hero.y = p0.y + (p1.y - p0.y) * easedT;
 
-				// Эффект зеркалирования
 				if (p1.x > p0.x) {
 					mirrorEffect = 1;
 				} else {
@@ -90,27 +85,6 @@ PIXI.Assets.load(['./assets/images/map.png', './assets/images/hero.png']).then((
 		animateMove();
 	}
 
-	// Сообщение о достижении конечной точки
-	function displayCompletionMessage() {
-		const messageElement = document.createElement('div');
-		messageElement.textContent = 'Достигнута конечная точка маршрута!';
-		messageElement.classList.add('completion-message');
-		document.body.appendChild(messageElement);
-
-		// Плавное появление и исчезновение
-		messageElement.style.opacity = 0;
-		setTimeout(() => {
-			messageElement.style.opacity = 1;
-		}, 100);
-
-		setTimeout(() => {
-			messageElement.style.opacity = 0;
-			setTimeout(() => {
-				messageElement.remove();
-			}, 1000);
-		}, 3000);
-	}
-
 	// Обработчик клика на кнопку "Универ"
 	const handleButtonClick = _.throttle(() => {
 		if (!isMoving && currentPointIndex < points.length - 1) {
@@ -118,11 +92,11 @@ PIXI.Assets.load(['./assets/images/map.png', './assets/images/hero.png']).then((
 		}
 	}, 300);
 
-	// Добавляем обработчик клика на кнопку
+	// Добавить обработчик для кнопки
 	const button = document.getElementById('move-button');
 	button.addEventListener('click', handleButtonClick);
 
-	// Бесконечная анимация покачивания персонажа
+	// Анимация покачивания персонажа
 	function bounceAnimation() {
 		hero.y += Math.sin(Date.now() / 200) * 0.5;
 		requestAnimationFrame(bounceAnimation);
