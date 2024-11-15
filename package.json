@@ -1,10 +1,16 @@
 {
-  "name": "${PROJECT_NAME}",
+  "name": "test-game",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "I created a game as part of a test assignment, and it turned out to be a fun and enjoyable project.",
+  "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "private": true
+  "private": true,
+  "dependencies": {
+    "pixi.js": "^8.5.2"
+  },
+  "devDependencies": {},
+  "author": "Alexander",
+  "license": "ISC"
 }

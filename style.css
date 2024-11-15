@@ -1,0 +1,119 @@
+body {
+    font-family: 'Cambria', 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+button {
+    border: none;
+}
+
+.map-container {
+    position: relative;
+    width: 980px;
+    height: 630px;
+}
+
+.button-bar {
+    position: absolute;
+    bottom: 18px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+.friends-block {
+    width: 536px;
+    height: 63px;
+    background: url('assets/images/friends-block.png') no-repeat center;
+    display: flex;
+    align-items: center; /* Выравниваем стрелки по центру по вертикали */
+    position: relative; /* Для правильного позиционирования стрелок */
+    z-index: 10;
+    padding: 0; /* Убираем внутренние отступы, чтобы стрелки не выходили за пределы */
+}
+
+.arrow-left,
+.arrow-right {
+    position: absolute; /* Позиционируем стрелки абсолютно внутри блока */
+    width: 14px;
+    height: 27px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 20;
+    padding: 11px 18px;
+}
+
+.arrow-left {
+    background: url('assets/images/arrow.png') no-repeat center;
+    transform: rotate(180deg);
+}
+
+.arrow-right {
+    right: 0;
+    background: url('assets/images/arrow.png') no-repeat center;
+}
+
+.move-button {
+    width: 202px;
+    height: 63px;
+    font-size: 31px;
+    color: white;
+    cursor: pointer;
+    background: url('assets/images/button-active.png') no-repeat center;
+    z-index: 10;
+}
+
+.rating-button {
+    width: 66px;
+    height: 63px;
+    background: url('assets/images/rating.png') no-repeat center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.email-button {
+    width: 66px;
+    height: 63px;
+    background: url('assets/images/email.png') no-repeat center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.chat-button {
+    width: 65px;
+    height: 63px;
+    background: url('assets/images/chat.png') no-repeat center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.friends {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 6px 33px;
+}
+
+.friends-icons {
+    width: 50px;
+    height: 51px;
+    background: url('assets/images/friend-icon.png') no-repeat center;
+    cursor: pointer;
+    z-index: 20;
+}
+
+.person-icon {
+    width: 28px;
+    height: 38px;
+    padding: 11px;
+    background: url('assets/images/person-icon.png') no-repeat center;
+    z-index: 30;
+}
