@@ -144,11 +144,4 @@ PIXI.Assets.load(['./assets/images/map.png', './assets/images/hero.png']).then((
 			overlay.style.display = 'none';
 		}
 	});
-
-	app.stage.interactive = true;
-	app.stage.on('pointerdown', (event) => {
-		const position = event.data.global;
-		console.log(`Координаты клика: x = ${position.x}, y = ${position.y}`);
-	});
-
 });

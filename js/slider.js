@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		const maxVisible = 8;
 		const totalIcons = iconsData.length;
 
-		// Функция для создания иконок
 		function createIcons() {
 			friendsItems.innerHTML = '';
 
@@ -46,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			const iconsElements = friendsItems.querySelectorAll('.friends-icons');
 			const totalVisibleIcons = Math.min(maxVisible, iconsElements.length);
 
-			// Зацикливаем иконки
 			let iconsHTML = '';
 			for (let i = 0; i < totalVisibleIcons; i++) {
 				const index = (currentIndex + i) % totalIcons;

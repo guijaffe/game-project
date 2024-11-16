@@ -1,6 +1,19 @@
-/* Существующие стили */
+::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background: #bd8140;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #3fa3bd;
+    border-radius: 15px;
+}
+
+
 body {
-    font-family: 'Cambria', 'Georgia', serif;
     margin: 0;
     padding: 0;
     display: flex;
@@ -12,10 +25,10 @@ body {
 }
 
 button {
+    font-family: 'Cambria', serif;
     border: none;
 }
 
-/* Map and Button Bar */
 .map-container {
     position: relative;
     width: 980px;
@@ -33,7 +46,6 @@ button {
     width: 963px;
 }
 
-/* Friends Block and Arrows */
 .friends-block {
     width: 536px;
     height: 63px;
@@ -70,7 +82,6 @@ button {
     background: url('../assets/images/arrow.png') no-repeat center;
 }
 
-/* Buttons */
 .move-button {
     width: 202px;
     height: 63px;
@@ -102,7 +113,6 @@ button {
     background: url('../assets/images/chat.png') no-repeat center;
 }
 
-/* Friends Items and Icons */
 .friends-items {
     display: flex;
     justify-content: space-evenly;
@@ -134,11 +144,10 @@ button {
     margin: 23px;
 }
 
-/* Modal and Overlay */
 #overlay {
     display: none;
     background-color: rgba(0, 0, 0, 0.2);
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -152,6 +161,8 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 80%;
     width: 523px;
     height: 455px;
     display: flex;
@@ -159,6 +170,7 @@ button {
     align-items: center;
     animation: animatemodal 0.4s;
     padding-top: 40px;
+    box-sizing: border-box;
 }
 
 #modal-header {
@@ -193,7 +205,6 @@ button {
     margin: 0 17px;
 }
 
-/* Table */
 .table-header,
 .table-content {
     display: grid;
@@ -233,14 +244,13 @@ button {
     height: 100%;
     overflow-y: auto;
     box-sizing: content-box;
-    padding-right: 10px;
+    padding-right: 5px;
     margin-top: 5px;
 }
 
 .table-body {
     display: flex;
     flex-direction: column;
-    gap: 0;
     padding-bottom: 5px;
 }
 
@@ -249,7 +259,7 @@ button {
 }
 
 .leaderboard {
-    padding: 32px 30px;
+    padding: 32px 28px;
     height: 90%;
     border-radius: 15px;
     position: relative;
@@ -278,7 +288,6 @@ button {
     text-shadow: 0 0 5px #8c5a31;
 }
 
-/* Text */
 .header-text {
     color: #ffffff;
     font-size: 23px;
@@ -303,18 +312,21 @@ button {
 .rating-button:hover,
 .email-button:hover,
 .chat-button:hover {
-    transform: translateY(-5px); /* Поднимет кнопку вверх */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Добавит тень для левитации */
-    transition: transform 0.3s ease, box-shadow 0.2s ease; /* Плавное изменение */
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.2s ease;
     border-radius: 15px;
 }
 
-/* Эффект вжимания при нажатии */
 .move-button:active,
 .rating-button:active,
 .email-button:active,
 .chat-button:active {
-    transform: translateY(2px); /* Вдавливает кнопку немного вниз */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Уменьшает тень при нажатии */
+    transform: translateY(2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
 }
+
+
+
+

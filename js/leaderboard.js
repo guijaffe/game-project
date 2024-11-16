@@ -22,10 +22,8 @@ function getSortedRatingData(ratingData) {
  * @param {Array} friends - Массив с друзьями
  */
 function renderTable(sortedData, tableBody, friends) {
-	// Очистка таблицы
 	tableBody.innerHTML = '';
 
-	// Для каждого элемента из отсортированных данных создаем строку
 	sortedData.forEach((user, index) => {
 		const row = document.createElement('div');
 		row.classList.add('table-content');
@@ -38,7 +36,6 @@ function renderTable(sortedData, tableBody, friends) {
 			row.classList.add('friend-highlight');
 		}
 
-		// Заполняем строку данными
 		row.innerHTML = `
             <div class="cell">${index + 1}</div>
             <div class="cell">
@@ -50,7 +47,6 @@ function renderTable(sortedData, tableBody, friends) {
             <div class="cell">${user.points}</div>
         `;
 
-		// Добавляем строку в таблицу
 		tableBody.appendChild(row);
 	});
 }
