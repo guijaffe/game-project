@@ -41,6 +41,11 @@ function renderTable(sortedData, tableBody, friends) {
 		// Заполняем строку данными
 		row.innerHTML = `
             <div class="cell">${index + 1}</div>
+            <div class="cell">
+                <div class="avatar-container">
+                    <img src="${user.img}" alt="${user.name}" class="avatar">
+                </div>
+            </div>
             <div class="cell">${user.name} ${user.lastName}</div>
             <div class="cell">${user.points}</div>
         `;
