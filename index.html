@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Map Navigation</title>
-	<link rel="stylesheet" href="style.css">
+	<title>game test</title>
+	<link rel="stylesheet" href="css/style.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.1.2/pixi.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
 </head>
@@ -15,35 +15,41 @@
 		<div class="friends-block">
 			<button class="arrow-left"></button>
 			<div class="friends">
-				<div class="friends-icons">
-					<div class="person-icon"></div>
-				</div>
-				<div class="friends-icons">
-					<div class="person-icon"></div>
-				</div>
-				<div class="friends-icons">
-					<div class="person-icon"></div>
-				</div>
-				<div class="friends-icons">
-					<div class="person-icon"></div>
-				</div>
-				<div class="friends-icons">
-					<div class="person-icon"></div>
-				</div>
-				<div class="friends-icons">
-					<div class="person-icon"></div>
-				</div>
-				<div class="friends-icons"></div>
-				<div class="friends-icons"></div>
+				<div class="friends-items"></div>
 			</div>
 			<button class="arrow-right"></button>
 		</div>
 		<button class="chat-button"></button>
 		<button id="move-button" class="move-button">В УНИВЕР</button>
 		<button class="email-button"></button>
-		<button class="rating-button"></button>
+		<button id="open-btn" class="rating-button"></button>
+	</div>
+	<div id="overlay">
+		<div id="modal">
+			<div id="modal-header">
+				<span class="header-text">Рейтинг игроков</span>
+			</div>
+			<button id="close-btn"></button>
+			<div class="modal-content">
+				<div class="leaderboard">
+					<div class="table-header">
+						<div class="column">Место</div>
+						<div class="column">Имя Фамилия</div>
+						<div class="column">Опыт</div>
+					</div>
+					<div class="scroll-container">
+						<div class="table-body" id="tableBody">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
+
 <script src="script.js"></script>
+<script src="js/slider.js"></script>
+<script src="js/data.js"></script>
+<script src="js/leaderboard.js"></script>
 </body>
 </html>
