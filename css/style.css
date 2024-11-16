@@ -1,3 +1,4 @@
+/* Существующие стили */
 body {
     font-family: 'Cambria', 'Georgia', serif;
     margin: 0;
@@ -14,6 +15,7 @@ button {
     border: none;
 }
 
+/* Map and Button Bar */
 .map-container {
     position: relative;
     width: 980px;
@@ -28,21 +30,23 @@ button {
     right: 10px;
     display: flex;
     justify-content: space-between;
+    width: 963px;
 }
 
+/* Friends Block and Arrows */
 .friends-block {
     width: 536px;
     height: 63px;
     background: url('../assets/images/friends-block.png') no-repeat center;
     display: flex;
-    align-items: center; /* Выравниваем стрелки по центру по вертикали */
-    position: relative; /* Для правильного позиционирования стрелок */
-    padding: 0; /* Убираем внутренние отступы, чтобы стрелки не выходили за пределы */
+    align-items: center;
+    position: relative;
+    padding: 0;
 }
 
 .arrow-left,
 .arrow-right {
-    position: absolute; /* Позиционируем стрелки абсолютно внутри блока */
+    position: absolute;
     width: 14px;
     height: 27px;
     background-size: cover;
@@ -66,40 +70,39 @@ button {
     background: url('../assets/images/arrow.png') no-repeat center;
 }
 
+/* Buttons */
 .move-button {
     width: 202px;
     height: 63px;
     font-size: 31px;
     color: white;
-    cursor: pointer;
     background: url('../assets/images/button-active.png') no-repeat center;
+    cursor: pointer;
+}
+
+.rating-button,
+.email-button,
+.chat-button {
+    width: 66px;
+    height: 63px;
+    background: no-repeat center;
+    cursor: pointer;
 }
 
 .rating-button {
-    width: 66px;
-    height: 63px;
     background: url('../assets/images/rating.png') no-repeat center;
-    cursor: pointer;
 }
 
 .email-button {
-    width: 66px;
-    height: 63px;
     background: url('../assets/images/email.png') no-repeat center;
-    cursor: pointer;
 }
 
 .chat-button {
     width: 65px;
-    height: 63px;
     background: url('../assets/images/chat.png') no-repeat center;
-    cursor: pointer;
 }
 
-.friends {
-    width: 500px;
-}
-
+/* Friends Items and Icons */
 .friends-items {
     display: flex;
     justify-content: space-evenly;
@@ -131,6 +134,7 @@ button {
     margin: 23px;
 }
 
+/* Modal and Overlay */
 #overlay {
     display: none;
     background-color: rgba(0, 0, 0, 0.2);
@@ -153,56 +157,23 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    animation-name: animatemodal;
-    animation-duration: 0.4s;
-    padding-top: 40px; /* Место для заголовка */
+    animation: animatemodal 0.4s;
+    padding-top: 40px;
 }
 
 #modal-header {
     position: absolute;
-    top: 10px; /* Вынос заголовка за пределы модалки */
+    top: 10px;
     left: 50%;
     transform: translateX(-50%);
     background: url('../assets/images/header-rating.png') no-repeat center;
-    background-size: contain; /* Адаптируем изображение по размеру блока */
+    background-size: contain;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
     width: 264px;
     height: 33px;
-}
-
-/* Стиль для строк в теле таблицы */
-.table-content {
-    background: url('../assets/images/table-body.png') no-repeat center;
-    color: white;
-    display: grid;
-    align-items: center; /* Выравнивание элементов по вертикали */
-    height: 29px;
-    margin: 2px;
-    text-align: center; /* Центрируем текст в ячейках */
-    padding-left: 30px;
-    grid-template-columns: 3fr 2fr 10fr 4fr;
-}
-
-.table-content .cell {
-    display: flex;
-    align-items: center; /* Вертикальное выравнивание */
-    white-space: nowrap;
-}
-
-.table-content:hover {
-    opacity: 0.9;
-    cursor: pointer;
-}
-
-.header-text {
-    color: #ffffff;
-    font-size: 23px;
-    font-weight: bold;
-    text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .modal-content {
@@ -221,34 +192,47 @@ button {
     cursor: pointer;
     margin: 0 17px;
 }
-.leaderboard {
-    padding: 32px 30px;
-    height: 90%;
-    border-radius: 15px;
-    position: relative; /* Для позиционирования заголовка */
-    box-sizing: border-box;
-}
 
-
-/* Стиль для заголовка таблицы */
-.table-header {
-    padding: 0 20px;
-    grid-template-columns: 2fr 4fr 1fr;
+/* Table */
+.table-header,
+.table-content {
     display: grid;
     align-items: center;
-    background: url('../assets/images/table-header.png') no-repeat center;
-    color: white;
-    font-weight: bold;
-    font-size: 14px;
     height: 29px;
+    color: white;
 }
 
+.table-header {
+    padding: 0 20px;
+    grid-template-columns: 3fr 6fr 2fr;
+    background: url('../assets/images/table-header.png') no-repeat center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.table-content {
+    background: url('../assets/images/table-body.png') no-repeat center;
+    margin: 2px;
+    padding-left: 35px;
+    grid-template-columns: 2fr 1fr 10fr 4fr;
+}
+
+.table-content .cell {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.table-content:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
 
 .scroll-container {
     width: 100%;
-    height: 100%; /* Высота без учета заголовка */
-    overflow-y: auto; /* Скроллим только тело таблицы */
-    box-sizing: content-box; /* Включаем padding внутрь расчета ширины */
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: content-box;
     padding-right: 10px;
     margin-top: 5px;
 }
@@ -256,12 +240,37 @@ button {
 .table-body {
     display: flex;
     flex-direction: column;
-    gap: 0; /* Убедитесь, что здесь нет отступов, если не требуется */
-    padding-bottom: 5px; /* Добавляем дополнительное пространство внизу */
+    gap: 0;
+    padding-bottom: 5px;
 }
 
 .leaderboard-table {
     width: 100%;
+}
+
+.leaderboard {
+    padding: 32px 30px;
+    height: 90%;
+    border-radius: 15px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.avatar-container {
+    width: 30px;
+    height: 29px;
+    background: url('../assets/images/modal-friends-block.png') no-repeat;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.avatar {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
 }
 
 .friend-highlight {
@@ -269,25 +278,16 @@ button {
     text-shadow: 0 0 5px #8c5a31;
 }
 
-/* Стили для аватара */
-.avatar-container {
-    width: 30px; /* Устанавливаем фиксированную ширину для контейнера */
-    height: 29px; /* Устанавливаем фиксированную высоту для контейнера */
-    background: url('../assets/images/modal-friends-block.png') no-repeat;
-    overflow: hidden;
-    display: flex; /* Используем flexbox для центрирования */
-    justify-content: center; /* Горизонтальное выравнивание по центру */
-    align-items: center; /* Вертикальное выравнивание по центру */
-    margin-right: 10px; /* Отступ справа от аватара */
+/* Text */
+.header-text {
+    color: #ffffff;
+    font-size: 23px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.avatar {
-    width: 20px; /* Задаем ширину аватара на 100% от контейнера */
-    height: 20px; /* Задаем высоту аватара на 100% от контейнера */
-    object-fit: cover; /* Для сохранения пропорций изображения */
-}
-
-
+/* Animations */
 @keyframes animatemodal {
     from {
         top: -300px;
@@ -297,4 +297,24 @@ button {
         top: 50%;
         opacity: 1;
     }
+}
+
+.move-button:hover,
+.rating-button:hover,
+.email-button:hover,
+.chat-button:hover {
+    transform: translateY(-5px); /* Поднимет кнопку вверх */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Добавит тень для левитации */
+    transition: transform 0.3s ease, box-shadow 0.2s ease; /* Плавное изменение */
+    border-radius: 15px;
+}
+
+/* Эффект вжимания при нажатии */
+.move-button:active,
+.rating-button:active,
+.email-button:active,
+.chat-button:active {
+    transform: translateY(2px); /* Вдавливает кнопку немного вниз */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Уменьшает тень при нажатии */
+    border-radius: 15px;
 }
