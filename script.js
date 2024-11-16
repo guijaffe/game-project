@@ -35,7 +35,6 @@ PIXI.Assets.load(['./assets/images/map.png', './assets/images/hero.png']).then((
 	let isMoving = false;
 	let currentPointIndex = 0;
 	let t = 0;
-	let mirrorEffect = 1;
 
 	function easeInOutQuad(t) {
 		return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
@@ -74,43 +73,45 @@ PIXI.Assets.load(['./assets/images/map.png', './assets/images/hero.png']).then((
 		t = 0;
 		isMoving = true;
 
-		function animateMove() {
-			if (t < 1 && isMoving) {
-				t += 0.02;
+		let lastMirrorTime = 0;
+		const mirrorInterval = 200;
 
-				const easedT = easeInOutQuad(t);
+	function animateMove() {
+		if (t < 1 && isMoving) {
+			t += 0.02;
 
-				const [controlPoint1, controlPoint2] = controlPointsList[currentPointIndex];
+			const easedT = easeInOutQuad(t);
 
-				const bezierX = Math.pow(1 - easedT, 3) * p0.x
-					+ 3 * Math.pow(1 - easedT, 2) * easedT * controlPoint1.x
-					+ 3 * (1 - easedT) * Math.pow(easedT, 2) * controlPoint2.x
-					+ Math.pow(easedT, 3) * p1.x;
+			const [controlPoint1, controlPoint2] = controlPointsList[currentPointIndex];
 
-				const bezierY = Math.pow(1 - easedT, 3) * p0.y
-					+ 3 * Math.pow(1 - easedT, 2) * easedT * controlPoint1.y
-					+ 3 * (1 - easedT) * Math.pow(easedT, 2) * controlPoint2.y
-					+ Math.pow(easedT, 3) * p1.y;
+			const bezierX = Math.pow(1 - easedT, 3) * p0.x
+				+ 3 * Math.pow(1 - easedT, 2) * easedT * controlPoint1.x
+				+ 3 * (1 - easedT) * Math.pow(easedT, 2) * controlPoint2.x
+				+ Math.pow(easedT, 3) * p1.x;
 
-				hero.x = bezierX;
-				hero.y = bezierY;
+			const bezierY = Math.pow(1 - easedT, 3) * p0.y
+				+ 3 * Math.pow(1 - easedT, 2) * easedT * controlPoint1.y
+				+ 3 * (1 - easedT) * Math.pow(easedT, 2) * controlPoint2.y
+				+ Math.pow(easedT, 3) * p1.y;
 
-				if (p1.x > p0.x) {
-					mirrorEffect = 1;
-				} else {
-					mirrorEffect = -1;
-				}
-				hero.scale.x = mirrorEffect;
+			hero.x = bezierX;
+			hero.y = bezierY;
 
-				requestAnimationFrame(animateMove);
-			} else {
-				isMoving = false;
-				currentPointIndex++;
-				console.log(`Точка ${currentPointIndex} достигнута.`);
+			const currentTime = Date.now();
+			if (currentTime - lastMirrorTime > mirrorInterval) {
+				hero.scale.x = hero.scale.x === 1 ? -1 : 1;
+				lastMirrorTime = currentTime;
 			}
+
+			requestAnimationFrame(animateMove);
+		} else {
+			isMoving = false;
+			currentPointIndex++;
+			console.log(`Точка ${currentPointIndex} достигнута.`);
 		}
-		animateMove();
 	}
+	animateMove();
+}
 
 	const handleButtonClick = _.throttle(() => {
 		if (!isMoving && currentPointIndex < points.length - 1) {
