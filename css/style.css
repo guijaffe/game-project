@@ -1,0 +1,266 @@
+body {
+    font-family: 'Cambria', 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    user-select: none;
+}
+
+button {
+    border: none;
+}
+
+.map-container {
+    position: relative;
+    width: 980px;
+    height: 630px;
+    overflow: hidden;
+}
+
+.button-bar {
+    position: absolute;
+    bottom: 18px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.friends-block {
+    width: 536px;
+    height: 63px;
+    background: url('../assets/images/friends-block.png') no-repeat center;
+    display: flex;
+    align-items: center; /* Выравниваем стрелки по центру по вертикали */
+    position: relative; /* Для правильного позиционирования стрелок */
+    padding: 0; /* Убираем внутренние отступы, чтобы стрелки не выходили за пределы */
+}
+
+.arrow-left,
+.arrow-right {
+    position: absolute; /* Позиционируем стрелки абсолютно внутри блока */
+    width: 14px;
+    height: 27px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 11px 18px;
+    cursor: pointer;
+}
+
+.arrow-left:active,
+.arrow-right:active {
+    margin: -1px;
+}
+
+.arrow-left {
+    background: url('../assets/images/arrow.png') no-repeat center;
+    transform: rotate(180deg);
+}
+
+.arrow-right {
+    right: 0;
+    background: url('../assets/images/arrow.png') no-repeat center;
+}
+
+.move-button {
+    width: 202px;
+    height: 63px;
+    font-size: 31px;
+    color: white;
+    cursor: pointer;
+    background: url('../assets/images/button-active.png') no-repeat center;
+}
+
+.rating-button {
+    width: 66px;
+    height: 63px;
+    background: url('../assets/images/rating.png') no-repeat center;
+    cursor: pointer;
+}
+
+.email-button {
+    width: 66px;
+    height: 63px;
+    background: url('../assets/images/email.png') no-repeat center;
+    cursor: pointer;
+}
+
+.chat-button {
+    width: 65px;
+    height: 63px;
+    background: url('../assets/images/chat.png') no-repeat center;
+    cursor: pointer;
+}
+
+.friends {
+    width: 500px;
+}
+
+.friends-items {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 6px 35px;
+    overflow: hidden;
+}
+
+.friends-icons {
+    min-width: 50px;
+    height: 51px;
+    background: url('../assets/images/friend-icon.png') no-repeat center;
+    cursor: pointer;
+    margin: 4px;
+}
+
+.person-icon {
+    width: 28px;
+    height: 38px;
+    padding: 11px;
+    background: url('../assets/images/person-icon.png') no-repeat center;
+}
+
+.plus {
+    position: absolute;
+    width: 34px;
+    height: 35px;
+    background: url('../assets/images/plus.png') no-repeat center;
+    top: -28px;
+    margin: 23px;
+}
+
+#overlay {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#modal {
+    position: absolute;
+    background: url('../assets/images/modal-background.png') no-repeat center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 523px;
+    height: 455px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation-name: animatemodal;
+    animation-duration: 0.4s;
+    padding-top: 40px; /* Место для заголовка */
+}
+
+#modal-header {
+    position: absolute;
+    top: 10px; /* Вынос заголовка за пределы модалки */
+    left: 50%;
+    transform: translateX(-50%);
+    background: url('../assets/images/header-rating.png') no-repeat center;
+    background-size: contain; /* Адаптируем изображение по размеру блока */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    width: 264px;
+    height: 33px;
+}
+
+.table-content {
+    background: url('../assets/images/table-body.png') no-repeat center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 403px;
+    height: 29px;
+    margin: 2px;
+    color: white;
+}
+
+.header-text {
+    color: #ffffff;
+    font-size: 23px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content {
+    background-color: #8C5A31;
+    width: 464px;
+    height: 324px;
+    border-radius: 15px;
+    margin-top: 37px;
+}
+
+#close-btn {
+    align-self: flex-end;
+    background: url('../assets/images/close-button.png') no-repeat;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    margin: 0 17px;
+}
+.leaderboard {
+    margin: 32px 30px;
+    height: 260px;
+    border-radius: 15px;
+    position: relative; /* Для позиционирования заголовка */
+    padding-top: 35px; /* Оставляем место для заголовка */
+    box-sizing: border-box;
+}
+
+.table-header {
+    background: url('../assets/images/table-header.png') no-repeat center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 29px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+}
+
+.scroll-container {
+    width: 100%;
+    height: 100%; /* Высота без учета заголовка */
+    overflow-y: auto; /* Скроллим только тело таблицы */
+    box-sizing: content-box; /* Включаем padding внутрь расчета ширины */
+    padding-right: 10px;
+}
+
+.table-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* Убедитесь, что здесь нет отступов, если не требуется */
+    padding-bottom: 5px; /* Добавляем дополнительное пространство внизу */
+}
+
+.leaderboard-table {
+    width: 100%;
+}
+
+.friend-highlight {
+    color: #b6ffc7;
+    text-shadow: 0 0 5px #8c5a31;
+}
+
+@keyframes animatemodal {
+    from {
+        top: -300px;
+        opacity: 0;
+    }
+    to {
+        top: 50%;
+        opacity: 1;
+    }
+}

@@ -81,9 +81,35 @@ PIXI.Assets.load(['./assets/images/map.png', './assets/images/hero.png']).then((
 				console.log(`Точка ${currentPointIndex} достигнута.`);
 			}
 		}
-
 		animateMove();
 	}
+
+// select the open-btn button
+	let openBtn = document.getElementById('open-btn');
+// select the modal-background
+	let overlay = document.getElementById('overlay');
+// select the close-btn
+	let closeBtn = document.getElementById('close-btn');
+
+// shows the modal when the user clicks open-btn
+	openBtn.addEventListener('click', function() {
+		overlay.style.display = 'block';
+	});
+
+// hides the modal when the user clicks close-btn
+	closeBtn.addEventListener('click', function() {
+		overlay.style.display = 'none';
+	});
+
+// hides the modal when the user clicks outside the modal
+	window.addEventListener('click', function(event) {
+		// check if the event happened on the modal-background
+		if (event.target === overlay) {
+			// hides the modal
+			overlay.style.display = 'none';
+		}
+	});
+
 
 	// Обработчик клика на кнопку "Универ"
 	const handleButtonClick = _.throttle(() => {
